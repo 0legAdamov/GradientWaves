@@ -40,8 +40,8 @@ class GradientWave: UIView {
     
     init(center: CGPoint, direction: GradientWaveDirection, maskImagename: String, startColor: UIColor, endColor: UIColor) {
         self.waveDirection = direction
-        self.startColor = startColor
-        self.endColor = endColor
+        self.startColor = startColor.cgColor
+        self.endColor = endColor.cgColor
         
         let maskImage = UIImage(named: maskImagename)!
         super.init(frame: CGRect(origin: .zero, size: maskImage.size))
@@ -49,17 +49,21 @@ class GradientWave: UIView {
         
         self.layer.mask = UIImageView(image: maskImage).layer
         self.backgroundColor = .clear
+        
+//        let imView = UIImageView(image: UIImage(named: "heart_stroke"))
+//        self.addSubview(imView)
     }
     
     
     func start() {
-        self.displayLink.add(to: .main, forMode: .commonModes)
+        self.displayLink = CADisplayLink(target: self, selector: #selector(update))
+        self.displayLink?.add(to: .main, forMode: .commonModes)
     }
     
     
     //MARK: Private
     
-    private let displayLink = CADisplayLink(target: self, selector: #selector(update))
+    private var displayLink: CADisplayLink?
     private let waveDirection: GradientWaveDirection
     
     private var endAnimationTime:   CFTimeInterval = 0
@@ -71,11 +75,11 @@ class GradientWave: UIView {
     
     private var currentPhase: CGFloat = 0
     
-    private let startColor: UIColor
-    private let endColor:   UIColor
+    private let startColor: CGColor
+    private let endColor:   CGColor
     
     private lazy var gradient: CGGradient = {
-        return CGGradient(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: [startColor, endColor] as CFArray, locations: [0.0, 0.85])!
+        return CGGradient(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: [startColor, endColor] as CFArray, locations: [0.0, 0.95])!
     }()
     
     
@@ -85,11 +89,17 @@ class GradientWave: UIView {
     
     
     private func animatePercentes(to newValue: Int) {
+        
         var value = CGFloat(newValue)
         if value > 100 { value = 100 } else if value < 0 { value = 0 }
         self.newPercentsValue = value
         
-        self.startAnimationTime = self.displayLink.timestamp
+        guard let displayLink = self.displayLink else {
+            self.percentsValue = value
+            return
+        }
+        
+        self.startAnimationTime = displayLink.timestamp
         self.endAnimationTime = self.startAnimationTime + self.animationDuration
         
         if value > self.percentsValue {
@@ -110,7 +120,7 @@ class GradientWave: UIView {
         
         guard self.animationType != .none else { return }
         
-        let time = self.displayLink.timestamp
+        let time = self.displayLink!.timestamp
         let delta = (time - self.startAnimationTime) / (self.endAnimationTime - self.startAnimationTime)
         guard delta > 0 else {
             self.percentsValue = self.newPercentsValue
@@ -140,9 +150,9 @@ class GradientWave: UIView {
         
         let wave = createWavePath()
         wave.addClip()
-        
+
         let midX = self.bounds.midX
-        context?.drawLinearGradient(self.gradient, start: CGPoint(x: midX, y: 0), end: CGPoint(x: midX, y: 0), options: CGGradientDrawingOptions())
+        context?.drawLinearGradient(self.gradient, start: CGPoint(x: midX, y: 0), end: CGPoint(x: midX, y: self.bounds.height), options: CGGradientDrawingOptions())
     }
     
     

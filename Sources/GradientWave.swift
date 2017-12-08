@@ -38,20 +38,29 @@ class GradientWave: UIView {
     }
     
     
-    init(center: CGPoint, direction: GradientWaveDirection, maskImagename: String, startColor: UIColor, endColor: UIColor) {
+    init?(center: CGPoint, direction: GradientWaveDirection, maskImagename: String, strokeImagename: String? = nil, startColor: UIColor, endColor: UIColor) {
+        guard let maskImage = UIImage(named: maskImagename) else { return nil }
+        
+        var strokeImageView: UIImageView?
+        if let strokeName = strokeImagename {
+            guard let strokeImage = UIImage(named: strokeName) else { return nil }
+            guard strokeImage.size == maskImage.size else { return nil }
+            strokeImageView = UIImageView(image: strokeImage)
+        }
+        
         self.waveDirection = direction
         self.startColor = startColor.cgColor
         self.endColor = endColor.cgColor
         
-        let maskImage = UIImage(named: maskImagename)!
         super.init(frame: CGRect(origin: .zero, size: maskImage.size))
         self.center = center
         
         self.layer.mask = UIImageView(image: maskImage).layer
         self.backgroundColor = .clear
         
-//        let imView = UIImageView(image: UIImage(named: "heart_stroke"))
-//        self.addSubview(imView)
+        if strokeImageView != nil {
+            self.addSubview(strokeImageView!)
+        }
     }
     
     

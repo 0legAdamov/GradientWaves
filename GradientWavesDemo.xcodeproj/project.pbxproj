@@ -7,16 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B6CDC7EB1FDACCE10088DF27 /* GradientWavesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CDC7E91FDACCE10088DF27 /* GradientWavesView.swift */; };
+		B6CDC7EC1FDACCE10088DF27 /* GradientWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CDC7EA1FDACCE10088DF27 /* GradientWave.swift */; };
 		B6EF3E651FD597A200DD9A0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EF3E641FD597A200DD9A0A /* AppDelegate.swift */; };
 		B6EF3E671FD597A200DD9A0A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EF3E661FD597A200DD9A0A /* ViewController.swift */; };
 		B6EF3E6A1FD597A200DD9A0A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6EF3E681FD597A200DD9A0A /* Main.storyboard */; };
 		B6EF3E6C1FD597A200DD9A0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6EF3E6B1FD597A200DD9A0A /* Assets.xcassets */; };
 		B6EF3E6F1FD597A200DD9A0A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6EF3E6D1FD597A200DD9A0A /* LaunchScreen.storyboard */; };
-		B6F87BDF1FD6EDBA00EF178A /* GradientWavesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F87BDD1FD6EDBA00EF178A /* GradientWavesView.swift */; };
-		B6F87BE01FD6EDBA00EF178A /* GradientWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F87BDE1FD6EDBA00EF178A /* GradientWave.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B6CDC7E91FDACCE10088DF27 /* GradientWavesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GradientWavesView.swift; path = Sources/GradientWavesView.swift; sourceTree = SOURCE_ROOT; };
+		B6CDC7EA1FDACCE10088DF27 /* GradientWave.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GradientWave.swift; path = Sources/GradientWave.swift; sourceTree = SOURCE_ROOT; };
 		B6EF3E611FD597A200DD9A0A /* GradientWavesDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GradientWavesDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6EF3E641FD597A200DD9A0A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6EF3E661FD597A200DD9A0A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -24,8 +26,6 @@
 		B6EF3E6B1FD597A200DD9A0A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B6EF3E6E1FD597A200DD9A0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B6EF3E701FD597A200DD9A0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B6F87BDD1FD6EDBA00EF178A /* GradientWavesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GradientWavesView.swift; path = GradientWavesDemo/GradientWavesView.swift; sourceTree = SOURCE_ROOT; };
-		B6F87BDE1FD6EDBA00EF178A /* GradientWave.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GradientWave.swift; path = GradientWavesDemo/GradientWave.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,8 +72,8 @@
 		B6F87BE11FD8326B00EF178A /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				B6F87BDE1FD6EDBA00EF178A /* GradientWave.swift */,
-				B6F87BDD1FD6EDBA00EF178A /* GradientWavesView.swift */,
+				B6CDC7EA1FDACCE10088DF27 /* GradientWave.swift */,
+				B6CDC7E91FDACCE10088DF27 /* GradientWavesView.swift */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
@@ -150,9 +150,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6F87BDF1FD6EDBA00EF178A /* GradientWavesView.swift in Sources */,
+				B6CDC7EB1FDACCE10088DF27 /* GradientWavesView.swift in Sources */,
 				B6EF3E671FD597A200DD9A0A /* ViewController.swift in Sources */,
-				B6F87BE01FD6EDBA00EF178A /* GradientWave.swift in Sources */,
+				B6CDC7EC1FDACCE10088DF27 /* GradientWave.swift in Sources */,
 				B6EF3E651FD597A200DD9A0A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

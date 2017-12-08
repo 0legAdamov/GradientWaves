@@ -28,8 +28,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let x1 = 100
-        let x2 = UIScreen.main.bounds.width - 100
+        let x1: CGFloat = 100
+        let x2 = UIScreen.main.bounds.width - x1
         
         createOneWaveHeart(CGPoint(x: x1, y: 180))
         createOneWaveHeartWithStroke(CGPoint(x: x2, y: 180))
@@ -43,8 +43,9 @@ class ViewController: UIViewController {
     
     
     func createOneWaveHeart(_ center: CGPoint) {
-        let view = GradientWave(center: center, direction: .left, maskImagename: "heart_mask",
-                                startColor: .fromRGB(r: 255, g: 51, b: 186, a: 0.8), endColor: .fromRGB(r: 255, g: 237, b: 249, a: 0.6))
+        guard let view = GradientWave(center: center, direction: .left, maskImagename: "heart_mask",
+                                      startColor: .fromRGB(r: 255, g: 51, b: 186, a: 0.8),
+                                      endColor: .fromRGB(r: 255, g: 237, b: 249, a: 0.6)) else { return }
         view.percents = Int(slider.value)
         self.view.addSubview(view)
         view.start()
@@ -53,6 +54,15 @@ class ViewController: UIViewController {
     }
     
     
-    func createOneWaveHeartWithStroke(_ center: CGPoint) {}
+    func createOneWaveHeartWithStroke(_ center: CGPoint) {
+        guard let view = GradientWave(center: center, direction: .left, maskImagename: "heart_mask", strokeImagename: "heart_stroke",
+                                      startColor: .fromRGB(r: 255, g: 51, b: 186, a: 0.8),
+                                      endColor: .fromRGB(r: 255, g: 237, b: 249, a: 0.6)) else { return }
+        view.percents = Int(slider.value)
+        self.view.addSubview(view)
+        view.start()
+        
+        singleWaves.append(view)
+    }
 }
 
